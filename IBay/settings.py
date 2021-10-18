@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 
@@ -221,7 +221,7 @@ AUTHENTICATION_BACKENDS = [
         
     'django.contrib.auth.backends.ModelBackend',    
     'allauth.account.auth_backends.AuthenticationBackend',
-    'social_core.backends.facebookOAuth2',
+    #'social_core.backends.facebookOAuth2',
         
 ]
 
