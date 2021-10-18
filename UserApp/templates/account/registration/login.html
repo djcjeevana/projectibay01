@@ -1,0 +1,88 @@
+{% extends 'basetemplates/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block mainbody %}
+
+
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="{%url 'Stores:home'%}">Home</a></li>
+                            <li class="active">Login </li>
+                        </ul>
+                    </div>
+                        <div>
+   
+    <div class="alert alert" role="alert">
+        
+    </div>
+    
+</div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Login Content Area -->
+            <div class="page-section mb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                            <!-- Login Form s-->
+
+                            <form method="POST" >{% csrf_token %}
+                            <div class="login-form">
+                                <h4 class="login-title">Login</h4>
+                                <div class="row">
+                                    {% for field in login_form %}
+                                     <div class="col-12 mb-20">
+                                        <label>{{field.labe_tag}}</label>
+                                        {{field}}
+                                        {%if field.help_text%}
+                                        <small styel="color:grey;">{{field.help_text}}</small>
+                                        {% endif%}                                        
+                                    </div>
+                                    {% endfor %}
+                                    {% for field in login_form %}
+                                        {% for error in field.errors %}
+                                        <p styel="color:red;">{{error}}</p>  
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% if login_form.non_field_errors %}
+                                        <div>
+                                            <p>{{login_form.non_field_errors}}</p>
+                                        </div> 
+                                    {% endif %}
+                                    
+                                    <div class="col-md-8">
+                                        <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
+                                            <input type="checkbox" id="remember_me">
+                                            <label for="remember_me">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
+                                        <a href="{%url 'password_change'%}"> Forgotten pasward?</a>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="register-button mt-0">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                            <p class="small text-center pt-4">
+                                {% comment %} <a href="{%url 'password_change'%}">Forgotten Password?</a> {% endcomment %}
+                            </p>
+                            <p class="small text-center">
+                                {% comment %} <a href="">Help Center?</a> {% endcomment %}
+                            </p>
+                     
+                        </div>
+               
+                   
+                    </div>
+                </div>
+            </div>
+            {% endblock mainbody %}
+            <!-- Login Content Area End Here -->

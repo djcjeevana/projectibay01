@@ -1,0 +1,90 @@
+{% extends 'basetemplates/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block mainbody %}
+
+<div class="breadcrumb-area">
+<div class="container">
+    <div class="breadcrumb-content">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="active"> Register</li>
+        </ul>
+    </div>
+        <div>
+
+
+
+  <div class="section">
+      <div class="container">
+
+          {%if messages %}
+
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="alert">
+              {{message}}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          <!--start from here-->
+          <div class="page-section mb-60">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-3 mb-30">
+                          <h1 class="font-weight-bold">User Panel</h1>
+                          {% include 'user_panel.html' %}
+                      </div>
+
+                      <div class="col-sm-12 col-md-12 col-lg-9 col-xs-12">
+                          <h1 class="text-center font-weight-bold">User Details</h1>
+                          <table class="shopping-cart-table table">
+                              <tr>
+                                  <th class="text-left">
+                                      <a href="{% url 'account:account' %}" class="primary-btn">Update Profile</a>
+                                      &nbsp; &nbsp; &nbsp;
+                                      <a href="" class="primary-btn">Change Password</a>
+                                  </th>
+                                  <td><img src="{{ profile.profile_image.url}}"
+                                          style="border-radius:10px; height: 100px;width:100px; ">
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">User Name :</th>
+                                  <td class="text-left">{{ profile.username}}  </td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">Full Name :</th>
+                                  <td class="text-left">{{ profile.first_name}} {{ profile.last_name}} </td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">Email</th>
+                                  <td class="text-left">{{ profile.email}}</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">Phone</th>
+                                  <td class="text-left">{{ profile.phone_number}}</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">Addres</th>
+                                  <td class="text-left">{{ profile.address_line_1}}</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-left">City</th>
+                                  <td class="text-left">{{ profile.town_city}}</td>
+                              </tr>
+                              
+
+                          </table>
+                      </div>
+                  </div>
+
+                  <!--end from here-->
+
+              </div>
+          </div>
+
+
+          {% endblock mainbody %}

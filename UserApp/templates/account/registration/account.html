@@ -1,0 +1,61 @@
+{% extends 'basetemplates/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block mainbody %}
+
+
+<div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="{%url 'Stores:home'%}">Home</a></li>
+                            <li class="active">Account </li>
+                        </ul>
+                    </div>
+                        <div>
+   
+    <div class="alert alert" role="alert">
+        
+    </div>
+    
+</div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Login Content Area -->
+            <div class="page-section mb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                            <!-- Login Form s-->
+
+                            <form method="POST" >{% csrf_token %}
+                            <div class="login-form">
+                                <h4 class="login-title">Account</h4>
+                                <div class="row">
+                                    {{account_form}}
+                                    
+                                    <div class="col-md-12">
+                                        <button class="register-button mt-0">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                            <p class="small text-center pt-4">
+                                {% comment %} <a href="">Forgotten Password?</a> {% endcomment %}
+                            </p>
+                            <p class="small text-center">
+                                {% comment %} <a href="">Help Center?</a> {% endcomment %}
+                            </p>
+                     
+                        </div>
+               
+                   
+                    </div>
+                </div>
+            </div>
+            {% endblock mainbody %}
+            <!-- Login Content Area End Here -->
